@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: get-task
+  namespace: gagan
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: get-task
+  template:
+    metadata:
+      labels:
+        app: get-task
+    spec:
+      containers:
+      - name: get-task
+        image: devopsinsiders/get-tasks
+        ports:
+        - containerPort: 8000
+        env:
+        - name: CONNECTION_STRING
+          value: "Driver={ODBC Driver 17 for SQL Server};Server=tcp:sqlserver929.database.windows.net,1433;Database=sqldb01;Uid=admin01;Pwd=admin@123456;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30"

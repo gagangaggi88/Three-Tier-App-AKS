@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-app-ui
+  namespace: gagan
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todo-app-ui
+  template:
+    metadata:
+      labels:
+        app: todo-app-ui
+    spec:
+      containers:
+      - name: todoappui-container
+        image: gagangaggi88/todo-appui
+        # resources:
+        #   limits:
+        #     memory: "128Mi"
+        #     cpu: "500m"
+        ports:
+        - containerPort: 80
